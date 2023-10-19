@@ -24,9 +24,9 @@ public class Task implements Serializable {
   public Task(String title, String description) {
     this.title = title;
     this.description = description;
-    this.createdAt = createdAt;
+    this.createdAt = LocalDateTime.now();
     this.updatedAt = updatedAt;
-    this.status = status;
+    this.status = TaskStatus.PENDING;
   }
 
   public Task() {
