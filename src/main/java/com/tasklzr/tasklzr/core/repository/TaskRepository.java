@@ -1,6 +1,6 @@
-package com.tasklzr.tasklzr.repository;
+package com.tasklzr.tasklzr.core.repository;
 
-import com.tasklzr.tasklzr.models.Task;
+import com.tasklzr.tasklzr.core.models.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

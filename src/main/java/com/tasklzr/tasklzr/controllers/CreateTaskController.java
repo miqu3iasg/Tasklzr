@@ -1,8 +1,8 @@
 package com.tasklzr.tasklzr.controllers;
 
 import com.tasklzr.tasklzr.application.CreateTaskService;
-import com.tasklzr.tasklzr.dtos.CreateTaskDTO;
-import com.tasklzr.tasklzr.models.Task;
+import com.tasklzr.tasklzr.core.dtos.CreateTaskDTO;
+import com.tasklzr.tasklzr.core.models.Task;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

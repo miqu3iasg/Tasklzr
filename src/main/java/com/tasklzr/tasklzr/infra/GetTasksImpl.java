@@ -1,8 +1,8 @@
 package com.tasklzr.tasklzr.infra;
 
 import com.tasklzr.tasklzr.adapters.GetTasksGateway;
-import com.tasklzr.tasklzr.models.Task;
-import com.tasklzr.tasklzr.repository.TaskRepository;
+import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

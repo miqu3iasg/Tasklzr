@@ -1,8 +1,8 @@
 package com.tasklzr.tasklzr.builder;
 
-import com.tasklzr.tasklzr.dtos.CreateTaskDTO;
-import com.tasklzr.tasklzr.models.Task;
-import com.tasklzr.tasklzr.models.TaskStatus;
+import com.tasklzr.tasklzr.core.dtos.CreateTaskDTO;
+import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.models.TaskStatus;
 
 import java.time.LocalDateTime;
 

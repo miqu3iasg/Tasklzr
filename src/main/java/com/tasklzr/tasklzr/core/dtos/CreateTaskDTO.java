@@ -1,4 +1,4 @@
-package com.tasklzr.tasklzr.dtos;
+package com.tasklzr.tasklzr.core.dtos;
 
 public record CreateTaskDTO(String title, String description) {
 }

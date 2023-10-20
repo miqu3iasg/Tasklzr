@@ -1,7 +1,7 @@
 package com.tasklzr.tasklzr.controllers;
 
 import com.tasklzr.tasklzr.application.GetTasksService;
-import com.tasklzr.tasklzr.models.Task;
+import com.tasklzr.tasklzr.core.models.Task;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

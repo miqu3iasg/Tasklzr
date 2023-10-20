@@ -1,12 +1,12 @@
 package com.tasklzr.tasklzr.infra;
 
 import com.tasklzr.tasklzr.adapters.CreateTaskGateway;
-import com.tasklzr.tasklzr.models.Task;
-import com.tasklzr.tasklzr.repository.TaskRepository;
+import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateTaskImpl implements CreateTaskGateway{
+public class CreateTaskImpl implements CreateTaskGateway {
   final TaskRepository repository;
 
   public CreateTaskImpl(TaskRepository repository) {

@@ -1,4 +1,4 @@
-package com.tasklzr.tasklzr.models;
+package com.tasklzr.tasklzr.core.models;
 
 import jakarta.persistence.*;
 

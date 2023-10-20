@@ -2,8 +2,7 @@ package com.tasklzr.tasklzr.application;
 
 import com.tasklzr.tasklzr.adapters.GetTasksGateway;
 import com.tasklzr.tasklzr.core.useCases.GetTasksUseCase;
-import com.tasklzr.tasklzr.models.Task;
-import com.tasklzr.tasklzr.repository.TaskRepository;
+import com.tasklzr.tasklzr.core.models.Task;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

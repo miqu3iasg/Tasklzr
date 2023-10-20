@@ -1,9 +1,9 @@
 package com.tasklzr.tasklzr.infra;
 
 import com.tasklzr.tasklzr.adapters.CheckOrUncheckTaskGateway;
-import com.tasklzr.tasklzr.models.Task;
-import com.tasklzr.tasklzr.models.TaskStatus;
-import com.tasklzr.tasklzr.repository.TaskRepository;
+import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.models.TaskStatus;
+import com.tasklzr.tasklzr.core.repository.TaskRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
