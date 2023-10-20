@@ -1,6 +1,8 @@
 package com.tasklzr.tasklzr.application;
 
 import com.tasklzr.tasklzr.adapters.UpdateTaskGateway;
+import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.repository.TaskRepository;
 import com.tasklzr.tasklzr.core.useCases.UpdateTaskUseCase;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,12 @@ public class UpdateTaskService implements UpdateTaskUseCase {
   }
 
   @Override
-  public void updateTitleTask(UUID id, String title) throws Exception {
-    gateway.updateTitleTask(id, title);
+  public Task updateTitleTask(UUID id, String title) throws Exception {
+    return gateway.updateTitleTask(id, title);
   }
 
   @Override
-  public void updateDescriptionTask(UUID id, String description) throws Exception {
-    gateway.updateDescriptionTask(id, description);
+  public Task updateDescriptionTask(UUID id, String description) throws Exception {
+    return gateway.updateDescriptionTask(id, description);
   }
 }

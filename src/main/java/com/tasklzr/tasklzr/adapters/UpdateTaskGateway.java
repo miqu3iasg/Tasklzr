@@ -1,8 +1,10 @@
 package com.tasklzr.tasklzr.adapters;
 
+import com.tasklzr.tasklzr.core.models.Task;
+
 import java.util.UUID;
 
 public interface UpdateTaskGateway {
-  void updateTitleTask(UUID id, String title) throws Exception;
-  void updateDescriptionTask(UUID id, String description) throws Exception;
+  Task updateTitleTask(UUID id, String title) throws Exception;
+  Task updateDescriptionTask(UUID id, String description) throws Exception;
 }

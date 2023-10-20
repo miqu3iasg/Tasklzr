@@ -1,4 +1,4 @@
-package com.tasklzr.tasklzr.builder;
+package com.tasklzr.tasklzr.core.builder;
 
 import com.tasklzr.tasklzr.core.dtos.CreateTaskDTO;
 import com.tasklzr.tasklzr.core.models.Task;

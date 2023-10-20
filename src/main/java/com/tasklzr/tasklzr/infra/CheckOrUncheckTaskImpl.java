@@ -7,6 +7,7 @@ import com.tasklzr.tasklzr.core.repository.TaskRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,6 +27,7 @@ public class CheckOrUncheckTaskImpl implements CheckOrUncheckTaskGateway {
     if(taskExists.isEmpty()) throw new Exception("Task not found");
 
     taskExists.get().setStatus(TaskStatus.FINISHED);
+    taskExists.get().setUpdatedAt(LocalDateTime.now());
 
     var taskChecked = taskExists.get();
     mapper.map(taskExists, taskChecked);
@@ -41,6 +43,7 @@ public class CheckOrUncheckTaskImpl implements CheckOrUncheckTaskGateway {
     if(taskExists.isEmpty()) throw new Exception("Task not found");
 
     taskExists.get().setStatus(TaskStatus.PENDING);
+    taskExists.get().setUpdatedAt(LocalDateTime.now());
 
     var taskChecked = taskExists.get();
     mapper.map(taskExists, taskChecked);
