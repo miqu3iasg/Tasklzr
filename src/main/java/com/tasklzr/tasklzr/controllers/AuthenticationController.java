@@ -1,11 +1,10 @@
 package com.tasklzr.tasklzr.controllers;
 
 import com.tasklzr.tasklzr.core.dtos.AuthenticationDTO;
-import com.tasklzr.tasklzr.core.dtos.LoginResponseDTO;
 import com.tasklzr.tasklzr.core.dtos.RegisterUserDTO;
 import com.tasklzr.tasklzr.core.models.user.User;
-import com.tasklzr.tasklzr.core.repository.UserRepository;
-import com.tasklzr.tasklzr.security.service.TokenService;
+import com.tasklzr.tasklzr.core.repositories.UserRepository;
+import com.tasklzr.tasklzr.infra.security.service.TokenService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +32,7 @@ public class AuthenticationController {
   @PostMapping("/login")
   public ResponseEntity login(@RequestBody AuthenticationDTO request) {
     var userNamePassword = new UsernamePasswordAuthenticationToken(request.login(), request.password());
-    var auth =authenticationManager.authenticate(userNamePassword);
+    var auth = authenticationManager.authenticate(userNamePassword);
 
     var token = tokenService.generateToken((User) auth.getPrincipal());
 

@@ -1,7 +1,7 @@
-package com.tasklzr.tasklzr.security.infra;
+package com.tasklzr.tasklzr.infra.security.infra;
 
-import com.tasklzr.tasklzr.core.repository.UserRepository;
-import com.tasklzr.tasklzr.security.service.TokenService;
+import com.tasklzr.tasklzr.core.repositories.UserRepository;
+import com.tasklzr.tasklzr.infra.security.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,8 +17,8 @@ import java.io.IOException;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
-  private TokenService tokenService;
-  private @Lazy UserRepository repository;
+  final TokenService tokenService;
+  final @Lazy UserRepository repository;
 
   public SecurityFilter(TokenService tokenService, UserRepository repository) {
     this.tokenService = tokenService;

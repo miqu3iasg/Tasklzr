@@ -1,8 +1,8 @@
-package com.tasklzr.tasklzr.infra;
+package com.tasklzr.tasklzr.infra.implementations;
 
 import com.tasklzr.tasklzr.adapters.RemoveTaskGateway;
 import com.tasklzr.tasklzr.core.models.Task;
-import com.tasklzr.tasklzr.core.repository.TaskRepository;
+import com.tasklzr.tasklzr.core.repositories.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

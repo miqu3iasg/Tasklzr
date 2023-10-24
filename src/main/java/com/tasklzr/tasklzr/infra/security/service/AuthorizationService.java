@@ -1,6 +1,6 @@
-package com.tasklzr.tasklzr.security.service;
+package com.tasklzr.tasklzr.infra.security.service;
 
-import com.tasklzr.tasklzr.core.repository.UserRepository;
+import com.tasklzr.tasklzr.core.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class AuthorizationService implements UserDetailsService {
   final UserRepository repository;
 
-  public AuthorizationService(UserRepository repository) {
+  AuthorizationService(UserRepository repository) {
     this.repository = repository;
   }
 

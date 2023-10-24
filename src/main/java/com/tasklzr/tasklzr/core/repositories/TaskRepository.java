@@ -1,4 +1,4 @@
-package com.tasklzr.tasklzr.core.repository;
+package com.tasklzr.tasklzr.core.repositories;
 
 import com.tasklzr.tasklzr.core.models.Task;
 import org.springframework.data.jpa.repository.JpaRepository;

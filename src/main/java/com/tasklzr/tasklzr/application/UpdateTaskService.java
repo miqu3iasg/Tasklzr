@@ -2,7 +2,6 @@ package com.tasklzr.tasklzr.application;
 
 import com.tasklzr.tasklzr.adapters.UpdateTaskGateway;
 import com.tasklzr.tasklzr.core.models.Task;
-import com.tasklzr.tasklzr.core.repository.TaskRepository;
 import com.tasklzr.tasklzr.core.useCases.UpdateTaskUseCase;
 import org.springframework.stereotype.Service;
 
