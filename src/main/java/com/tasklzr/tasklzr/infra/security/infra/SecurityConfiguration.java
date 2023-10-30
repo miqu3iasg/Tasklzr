@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,7 +24,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration {
-  private static final String API_URL_PATTERN = "/**";
   final SecurityFilter securityFilter;
   final MvcRequestMatcher.Builder mvc;
 
@@ -35,26 +35,17 @@ public class SecurityConfiguration {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
-    MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
-
-    http.csrf(csrfConfigurer ->
-            csrfConfigurer.ignoringRequestMatchers(mvcMatcherBuilder.pattern(API_URL_PATTERN),
-                    PathRequest.toH2Console()));
-
-    http
-            .csrf(csrf -> csrf.disable())
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+    http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/auth/login")).permitAll()
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/register")).permitAll() // Only test
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/create")).hasRole("user")
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/login")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/register")).permitAll()
                     .anyRequest().authenticated()
             );
 
-    http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
+    http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+            .csrf(AbstractHttpConfigurer::disable);
+
     return http.build();
-
-
   }
 
   @Bean
