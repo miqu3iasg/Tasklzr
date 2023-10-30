@@ -39,7 +39,7 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/login")).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/register")).permitAll()
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll() // testing
             );
 
     http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
