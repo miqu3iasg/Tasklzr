@@ -1,6 +1,6 @@
 package com.tasklzr.tasklzr.infra.security.service;
 
-import com.tasklzr.tasklzr.core.repositories.UserRepository;
+import com.tasklzr.tasklzr.core.repositories.ProgrammerRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,14 +8,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthorizationService implements UserDetailsService {
-  final UserRepository repository;
+  final ProgrammerRepository repository;
 
-  AuthorizationService(UserRepository repository) {
+  AuthorizationService(ProgrammerRepository repository) {
     this.repository = repository;
   }
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return repository.findByLogin(username);
+    UserDetails programmer = repository.findByEmail(username);
+    if (programmer == null) {
+      throw new UsernameNotFoundException("Usuário não encontrado: " + username);
+    }
+    return programmer;
   }
 }

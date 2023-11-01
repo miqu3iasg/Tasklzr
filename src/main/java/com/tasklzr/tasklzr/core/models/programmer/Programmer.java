@@ -1,61 +1,62 @@
-package com.tasklzr.tasklzr.core.models.user;
+package com.tasklzr.tasklzr.core.models.programmer;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
-@Entity(name = "users")
-@Table(name = "USERS")
-public class User implements UserDetails {
+@Entity
+@Table(name = "TB_PROGRAMMERS")
+public class Programmer implements UserDetails, Serializable {
+  private static final long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String login;
+  private String name;
+  private String email;
   private String password;
-  private UserRole role;
+  private ProgrammerRole role;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
-
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    if(role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+    if(role == ProgrammerRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
     return List.of(new SimpleGrantedAuthority("ROLE_USER"));
   }
 
   @Override
   public String getPassword() {
-    return null;
+    return password;
   }
 
   @Override
   public String getUsername() {
-    return login;
+    return name;
   }
 
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return false;
+    return true;
   }
 
   public Long getId() {
@@ -66,50 +67,39 @@ public class User implements UserDetails {
     this.id = id;
   }
 
-  public String getLogin() {
-    return login;
+  public String getName() {
+    return name;
   }
 
-  public void setLogin(String login) {
-    this.login = login;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public void setPassword(String password) {
     this.password = password;
   }
 
-  public UserRole getRole() {
-    return role;
-  }
-
-  public void setRole(UserRole role) {
-    this.role = role;
-  }
-
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public LocalDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
   public void setUpdatedAt(LocalDateTime updatedAt) {
-    this.updatedAt = updatedAt;
+    this.updatedAt = LocalDateTime.now();
   }
 
-  public User(String login, String password, UserRole role) {
-    this.login = login;
+  public Programmer(String name, String email, String password, ProgrammerRole role) {
+    this.name = name;
+    this.email = email;
     this.password = password;
     this.role = role;
     this.createdAt = LocalDateTime.now();
-    this.updatedAt = updatedAt;
+    this.updatedAt = LocalDateTime.now();
   }
 
-  public User() {
+  public Programmer() {
   }
 }

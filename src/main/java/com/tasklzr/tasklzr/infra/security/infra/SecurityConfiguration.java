@@ -25,25 +25,22 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @Configuration
 public class SecurityConfiguration {
   final SecurityFilter securityFilter;
-  final MvcRequestMatcher.Builder mvc;
 
   @Lazy
-  public SecurityConfiguration(SecurityFilter securityFilter, HandlerMappingIntrospector introspector) {
+  public SecurityConfiguration(SecurityFilter securityFilter) {
     this.securityFilter = securityFilter;
-    this.mvc = new MvcRequestMatcher.Builder(introspector);
   }
-
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/login")).permitAll()
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/register")).permitAll()
-                    .anyRequest().permitAll() // testing
+                    .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/register").permitAll()
+                    .anyRequest().authenticated()
             );
 
-    http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-            .csrf(AbstractHttpConfigurer::disable);
+    http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
+    http.csrf(AbstractHttpConfigurer::disable);
 
     return http.build();
   }

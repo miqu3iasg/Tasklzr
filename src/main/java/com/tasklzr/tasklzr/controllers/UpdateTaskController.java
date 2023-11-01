@@ -1,7 +1,7 @@
 package com.tasklzr.tasklzr.controllers;
 
 import com.tasklzr.tasklzr.application.UpdateTaskService;
-import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.models.task.Task;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

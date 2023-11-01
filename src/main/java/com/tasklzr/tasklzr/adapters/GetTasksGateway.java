@@ -1,6 +1,6 @@
 package com.tasklzr.tasklzr.adapters;
 
-import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.models.task.Task;
 
 import java.util.List;
 import java.util.Optional;

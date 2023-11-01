@@ -1,6 +1,6 @@
 package com.tasklzr.tasklzr.core.useCases;
 
-import com.tasklzr.tasklzr.core.models.Task;
+import com.tasklzr.tasklzr.core.models.task.Task;
 
 import java.util.UUID;
 
