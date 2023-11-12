@@ -1,8 +1,6 @@
 package com.tasklzr.tasklzr.infra.security.infra;
 
-import com.tasklzr.tasklzr.core.models.programmer.Programmer;
 import com.tasklzr.tasklzr.core.repositories.ProgrammerRepository;
-import com.tasklzr.tasklzr.core.repositories.UserRepository;
 import com.tasklzr.tasklzr.infra.security.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -17,13 +15,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-/*
-Implemente tratamento de bloqueio de conta personalizado:
-Se você deseja implementar um tratamento personalizado para
-bloqueio e desbloqueio de contas, você pode estender o
-comportamento padrão do Spring Security para atender às
-necessidades específicas do seu aplicativo.
-*/
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
   final TokenService tokenService;

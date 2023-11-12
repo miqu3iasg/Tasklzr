@@ -3,9 +3,7 @@ package com.tasklzr.tasklzr.controllers;
 import com.tasklzr.tasklzr.core.dtos.AuthenticationDTO;
 import com.tasklzr.tasklzr.core.dtos.RegisterUserDTO;
 import com.tasklzr.tasklzr.core.models.programmer.Programmer;
-import com.tasklzr.tasklzr.core.models.user.User;
 import com.tasklzr.tasklzr.core.repositories.ProgrammerRepository;
-import com.tasklzr.tasklzr.core.repositories.UserRepository;
 import com.tasklzr.tasklzr.infra.security.service.TokenService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
@@ -32,6 +30,7 @@ public class AuthenticationController {
 
   @PostMapping("/login")
   ResponseEntity login(@RequestBody AuthenticationDTO request) {
+    Programmer programmer = new Programmer();
     if(repository.findByEmail(request.email()) == null) return ResponseEntity.badRequest().body("Programmer not found.");
 
     try {

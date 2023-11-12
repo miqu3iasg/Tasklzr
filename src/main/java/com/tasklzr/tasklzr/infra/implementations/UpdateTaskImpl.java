@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public class UpdateTaskImpl implements UpdateTaskGateway {
-  String regEx = "[{\\r\\n|\\r|\\n|\"|:}]+", replacement = "";
+  String REGEX = "[{\\r\\n|\\r|\\n|\"|:}]+", REPLACEMENT = "";
   final TaskRepository repository;
   public UpdateTaskImpl(TaskRepository repository) {
     this.repository = repository;
@@ -26,8 +26,8 @@ public class UpdateTaskImpl implements UpdateTaskGateway {
     if (taskExists.isEmpty()) throw new Exception("Task not found");
 
     taskExists.get().setTitle(title
-            .replaceAll(regEx, replacement)
-            .replace("title", replacement)
+            .replaceAll(REGEX, REPLACEMENT)
+            .replace("title", REPLACEMENT)
             .trim());
 
     taskExists.get().setUpdatedAt(LocalDateTime.now());
@@ -47,8 +47,8 @@ public class UpdateTaskImpl implements UpdateTaskGateway {
     if (taskExists.isEmpty()) throw new Exception("Task not found");
 
     taskExists.get().setDescription(description
-            .replaceAll(regEx, replacement)
-            .replace("description", replacement)
+            .replaceAll(REGEX, REPLACEMENT)
+            .replace("description", REPLACEMENT)
             .trim());
 
     taskExists.get().setUpdatedAt(LocalDateTime.now());

@@ -25,7 +25,7 @@ public class Task implements Serializable {
     this.title = title;
     this.description = description;
     this.createdAt = LocalDateTime.now();
-    this.updatedAt = updatedAt;
+    this.updatedAt = LocalDateTime.now();
     this.status = TaskStatus.PENDING;
   }
 
@@ -56,20 +56,16 @@ public class Task implements Serializable {
     this.description = description;
   }
 
+  public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = LocalDateTime.now();
+  }
+
   public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
   public LocalDateTime getUpdatedAt() {
     return updatedAt;
-  }
-
-  public void setUpdatedAt(LocalDateTime updatedAt) {
-    this.updatedAt = updatedAt;
   }
 
   public TaskStatus getStatus() {
